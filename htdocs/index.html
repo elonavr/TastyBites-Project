@@ -15,10 +15,11 @@
         
         /* Hero Section styling with background image */
         .hero-section {
+            /* Using an external image URL for immediate display */
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
-            height: 100vh;
+            height: 100vh; /* Full viewport height */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -26,14 +27,15 @@
             text-align: center;
         }
         
+        /* Logo styling */
         .navbar-brand img {
             height: 35px;
-            margin-left: 10px; 
+            margin-left: 10px; /* Changed from margin-right to margin-left for RTL */
         }
 
         .feature-icon {
             font-size: 3rem;
-            color: #ffc107;
+            color: #ffc107; /* Bootstrap warning color */
             margin-bottom: 1rem;
         }
         
@@ -41,13 +43,6 @@
             background-color: #212529;
             color: white;
             padding: 40px 0;
-        }
-
-        /* עיצוב ספציפי לוידאו */
-        video {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
     </style>
 </head>
@@ -116,7 +111,7 @@
             <h2 class="mb-4">צפו בפרסומת שלנו</h2>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <video controls>
+                    <video autoplay loop muted playsinline style="width: 100%; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
                         <source src="commercial.mp4" type="video/mp4">
                         הדפדפן שלך לא תומך בניגון וידאו.
                     </video>
