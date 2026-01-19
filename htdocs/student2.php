@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>פרופיל חבר צוות - אילון</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    
+    <style>
+        body { padding-top: 70px; transition: background-color 0.5s; }
+        
+        .profile-card {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #ffc107;
+            margin-bottom: 20px;
+        }
+
+        @media screen and (max-width: 600px) { 
+            h1 { color: red !important; } 
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">TastyBites</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">בית</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="team.html">חזרה לצוות</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="profile-card">
+            
+            <img src="https://ui-avatars.com/api/?name=Eylon+Avraham&background=random&size=200" alt="Profile" class="profile-img">
+            
+            <h1 class="fw-bold">אילון אברהם</h1>
+            
+            <p class="lead text-muted">מפתח Full Stack</p>
+            <hr>
+            <p>
+                היי, אני חלק מצוות הפיתוח של TastyBites.
+                אני מתמחה בבניית ממשקים ידידותיים למשתמש ודואג שהאתר ירוץ בצורה חלקה.
+            </p>
+            
+            <div class="d-grid gap-2 col-8 mx-auto mt-4">
+                <a href="mailto:student@example.com" class="btn btn-outline-dark">צור קשר</a>
+                
+                <button class="btn btn-warning" onclick="changeBackground()">קסם: שנה רקע</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeBackground() {
+            if (document.body.style.backgroundColor === 'lightblue') {
+                document.body.style.backgroundColor = 'white';
+            } else {
+                document.body.style.backgroundColor = 'lightblue';
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

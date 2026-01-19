@@ -1,72 +1,553 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>הזמן עכשיו - TastyBites</title>
+    <title>הזמנה - TastyBites</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
-        body { padding-top: 80px; background-color: #f8f9fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        /* Changed margin-right to margin-left for RTL logo spacing */
-        .navbar-brand img { height: 35px; margin-left: 10px; }
-        .footer { background-color: #212529; color: white; padding: 40px 0; margin-top: 50px; }
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            padding-top: 80px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('/assets/Background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-content {
+            flex: 1;
+        }
+
+        .navbar-brand img {
+            height: 35px;
+            margin-left: 10px;
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 1rem;
+            margin-left: 8px;
+            margin-right: 8px;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        .navbar-nav .nav-link.active {
+            font-weight: 500 !important;
+            color: #ffc107 !important;
+        }
+
+        .footer {
+            background-color: rgba(33, 37, 41, 0.95);
+            color: white;
+            padding: 20px 0;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .big-option-btn {
+            border: 2px solid #dee2e6;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+            height: 100%;
+        }
+
+        .big-option-btn:hover {
+            transform: translateY(-5px);
+            border-color: #ffc107;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            border-right: 5px solid #ffc107;
+            padding-right: 15px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            margin-top: 30px;
+        }
+
+        .category-header {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border: 1px solid #dee2e6;
+        }
+
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .qty-input {
+            width: 60px;
+            text-align: center;
+        }
+
+        .table-custom thead {
+            background-color: #212529;
+            color: white;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .order-container {
+                padding: 1rem;
+                border-radius: 10px;
+            }
+
+            .navbar-nav .nav-link {
+                font-size: 0.9rem;
+                padding: 0.5rem;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+
+            .btn {
+                font-size: 0.9rem;
+                padding: 0.5rem 1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (min-width: 577px) and (max-width: 768px) {
+            .order-container {
+                max-width: 95%;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .order-container {
+                max-width: 90%;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="TastyBites Logo">
+            <a class="navbar-brand" href="/index.html">
+                <img src="/assets/logo.png" alt="TastyBites Logo">
                 TastyBites
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">בית</a></li>
-                    <li class="nav-item"><a class="nav-link" href="menu.html">תפריט</a></li>
-                    <li class="nav-item"><a class="nav-link" href="gallery.html">גלריה</a></li>
-                    <li class="nav-item"><a class="nav-link active text-warning" href="order.html">הזמן עכשיו</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">צור קשר</a></li>
-                    <li class="nav-item"><a class="nav-link" href="team.html">הצוות שלנו</a></li>
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="/index.html">בית</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about.html">על המסעדה</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gallery.html">גלריה</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/menu.html">תפריט</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/burger_calculator.html">הרכבה עצמית</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/calorie_calculator.html">מחשבון קלוריות</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/order.html">הזמן עכשיו</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/customer_reviews.php">ביקורות לקוחות</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact.html">צור קשר</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/team.html">הצוות שלנו</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container mt-5 mb-5 main-content">
         <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6">
-                <div class="card shadow-lg border-0 rounded-3 mt-4">
-                    <div class="card-header bg-warning text-dark text-center p-4">
-                        <h2 class="fw-bold mb-0">בצעו הזמנה</h2>
-                        <p class="mb-0">המבורגרים חמים וטריים (50 ₪ לארוחה)</p>
-                    </div>
-                    <div class="card-body p-5">
-                        <form action="calc.php" method="POST">
-                            
-                            <div class="mb-4">
-                                <label for="meal" class="form-label fw-bold">בחרו את הארוחה שלכם</label>
-                                <select class="form-select form-select-lg" name="meal" id="meal">
-                                    <option value="ארוחת המבורגר קלאסי">ארוחת המבורגר קלאסי</option>
-                                    <option value="ארוחת צ'יזבורגר">ארוחת צ'יזבורגר</option>
-                                    <option value="ארוחת דאבל סמאש">ארוחת דאבל סמאש</option>
-                                    <option value="ארוחת המבורגר טבעוני">ארוחת המבורגר פטריות טבעוני</option>
-                                </select>
+            <div class="col-lg-8">
+                <div class="card glass-card p-4 fade-in">
+
+                    <h2 class="text-center fw-bold mb-4" id="page-title">מה תרצו לעשות היום?</h2>
+
+                    <form action="/backend/order_process.php" method="POST" id="mainForm">
+
+                        <div class="row g-4 mb-4" id="main-selection">
+                            <div class="col-md-6">
+                                <div class="big-option-btn" onclick="selectMainOption('table')">
+                                    <i class="fas fa-utensils fa-4x"></i>
+                                    <h3>הזמנת שולחן</h3>
+                                    <p class="text-muted">לשריין מקום במסעדה</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="big-option-btn" onclick="selectMainOption('food')">
+                                    <i class="fas fa-hamburger fa-4x"></i>
+                                    <h3>הזמנת אוכל</h3>
+                                    <p class="text-muted">משלוח או איסוף עצמי</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="order_category" id="order_category">
+                        <input type="hidden" name="custom_burger_data" id="custom_burger_data">
+                        <input type="hidden" name="full_order_details" id="full_order_details">
+
+                        <div id="table-reservation-form" style="display: none;" class="fade-in">
+                            <div class="alert alert-warning">
+                                <i class="fas fa-info-circle"></i> התשלום יתבצע מול המלצר במסעדה.
+                            </div>
+                            <h4 class="section-title">פרטי הזמנה</h4>
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold">תאריך ושעה:</label>
+                                    <input type="datetime-local" name="table_datetime" class="form-control">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold">מספר סועדים:</label>
+                                    <input type="number" name="guests" class="form-control" value="2" min="1" max="20">
+                                </div>
+                            </div>
+                            <h4 class="section-title">פרטי איש קשר</h4>
+                            <div class="row mb-3">
+                                <div class="col-md-6"><input type="text" name="contact_name" class="form-control"
+                                        placeholder="שם מלא" data-required="true"></div>
+                                <div class="col-md-6"><input type="tel" name="contact_phone" class="form-control"
+                                        placeholder="טלפון" data-required="true"></div>
+                            </div>
+                            <button type="submit" class="btn btn-dark w-100 fw-bold">אשר הזמנת שולחן</button>
+                        </div>
+
+                        <div id="food-order-wrapper" style="display: none;" class="fade-in">
+
+                            <div id="step-1-selection">
+                                <h4 class="section-title">איך תרצו לקבל את האוכל?</h4>
+                                <div class="row mb-4">
+                                    <div class="col-6">
+                                        <input type="radio" class="btn-check" name="delivery_method" id="delivery"
+                                            value="delivery" onchange="toggleAddressFields()" checked>
+                                        <label class="btn btn-outline-dark w-100 p-3 fw-bold" for="delivery">
+                                            <i class="fas fa-motorcycle"></i> משלוח (15 ₪)
+                                        </label>
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="radio" class="btn-check" name="delivery_method" id="pickup"
+                                            value="pickup" onchange="toggleAddressFields()">
+                                        <label class="btn btn-outline-dark w-100 p-3 fw-bold" for="pickup">
+                                            <i class="fas fa-walking"></i> איסוף עצמי
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div id="regular-menu-selection">
+                                    <h4 class="section-title"><i class="fas fa-hamburger"></i> המנה העיקרית</h4>
+                                    <div class="row">
+                                        <div class="col-md-8 mb-3">
+                                            <label class="form-label fw-bold">בחרו המבורגר:</label>
+                                            <select class="form-select" id="burger_select" name="burger_type">
+                                                <option value="none" data-price="0">-- ללא המבורגר --</option>
+                                                <option value="classic" data-price="58">הקלאסי של TASTY (58 ₪)</option>
+                                                <option value="cheesebite" data-price="66">CHEESEBITE (66 ₪)</option>
+                                                <option value="indulgent" data-price="82">המושחת (82 ₪)</option>
+                                                <option value="crunch" data-price="62">קראנץ' צ'יקן (62 ₪)</option>
+                                                <option value="vegan" data-price="64">הטבעונית (64 ₪)</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label class="form-label fw-bold">כמות:</label>
+                                            <input type="number" id="burger_qty" name="burger_qty" class="form-control"
+                                                value="0" min="0">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-2">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label fw-bold">מידת עשייה:</label>
+                                            <select class="form-select" id="std_doneness" name="std_doneness">
+                                                <option value="Medium">Medium (מומלץ)</option>
+                                                <option value="Medium-Well">Medium-Well</option>
+                                                <option value="Well-Done">Well-Done</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label fw-bold">לחמניה:</label>
+                                            <select class="form-select" id="std_bun" name="std_bun">
+                                                <option value="Brioche">בריוש קלאסית</option>
+                                                <option value="WholeWheat">חיטה מלאה</option>
+                                                <option value="NoBun">ללא לחמניה</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">בקשות מיוחדות / שינויים בירקות:</label>
+                                        <textarea class="form-control" id="std_notes" name="std_notes" rows="2"
+                                            placeholder="למשל: בלי עגבניה, בלי בצל..."></textarea>
+                                    </div>
+
+                                    <div id="sauces-section" class="mt-4">
+                                        <div class="category-header"><i class="fas fa-spray-can"></i> רטבים בצד</div>
+                                        <div class="row">
+                                            <div class="col-6 col-md-3">
+                                                <div class="form-check"><input class="form-check-input sauce-check"
+                                                        type="checkbox" value="איולי כמהין"><label
+                                                        class="form-check-label">איולי כמהין</label></div>
+                                            </div>
+                                            <div class="col-6 col-md-3">
+                                                <div class="form-check"><input class="form-check-input sauce-check"
+                                                        type="checkbox" value="איולי צ'יפוטלה"><label
+                                                        class="form-check-label">איולי צ'יפוטלה</label></div>
+                                            </div>
+                                            <div class="col-6 col-md-3">
+                                                <div class="form-check"><input class="form-check-input sauce-check"
+                                                        type="checkbox" value="ברביקיו דבש"><label
+                                                        class="form-check-label">ברביקיו דבש</label></div>
+                                            </div>
+                                            <div class="col-6 col-md-3">
+                                                <div class="form-check"><input class="form-check-input sauce-check"
+                                                        type="checkbox" value="חרדל דיז'ון"><label
+                                                        class="form-check-label">חרדל דיז'ון</label></div>
+                                            </div>
+                                            <div class="col-6 col-md-3">
+                                                <div class="form-check"><input class="form-check-input sauce-check"
+                                                        type="checkbox" value="צ'ימיצ'ורי"><label
+                                                        class="form-check-label">צ'ימיצ'ורי</label></div>
+                                            </div>
+                                            <div class="col-6 col-md-3">
+                                                <div class="form-check"><input class="form-check-input sauce-check"
+                                                        type="checkbox" value="סריראצ'ה"><label
+                                                        class="form-check-label">סריראצ'ה</label></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="custom-burger-msg" style="display: none;" class="alert alert-success mt-4">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fas fa-check-circle"></i> ההמבורגר המיוחד שלך שמור ומוכן.
+                                        </div>
+                                        <button type="button" class="btn btn-outline-danger btn-sm fw-bold"
+                                            onclick="removeCustomBurger()">
+                                            <i class="fas fa-trash-alt"></i> בטל הרכבה והזמן רגיל
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div id="extras-section">
+
+                                    <h4 class="section-title"><i class="fas fa-utensils"></i> תוספות ליד</h4>
+                                    <div class="bg-light p-3 rounded border">
+                                        <div class="item-row">
+                                            <span><i class="fas fa-drumstick-bite text-warning"></i> כנפיים ברוטב באפלו
+                                                (32 ₪)</span>
+                                            <input type="number" class="form-control qty-input side-item"
+                                                data-name="כנפיים באפלו" data-price="32" value="0" min="0">
+                                        </div>
+                                        <div class="item-row">
+                                            <span><i class="fas fa-cubes text-warning"></i> הום פרייז TASTY (28
+                                                ₪)</span>
+                                            <input type="number" class="form-control qty-input side-item"
+                                                data-name="הום פרייז" data-price="28" value="0" min="0">
+                                        </div>
+                                        <div class="item-row">
+                                            <span><i class="fas fa-french-fries text-warning"></i> צ'יפס הבית (22
+                                                ₪)</span>
+                                            <input type="number" class="form-control qty-input side-item"
+                                                data-name="צ'יפס הבית" data-price="22" value="0" min="0">
+                                        </div>
+                                    </div>
+
+                                    <h4 class="section-title"><i class="fas fa-glass-cheers"></i> שתייה קלה</h4>
+                                    <div class="bg-light p-3 rounded border">
+                                        <div class="item-row">
+                                            <span>קוקה קולה (13 ₪)</span>
+                                            <input type="number" class="form-control qty-input drink-item"
+                                                data-name="קוקה קולה" data-price="13" value="0" min="0">
+                                        </div>
+                                        <div class="item-row">
+                                            <span>קולה זירו (13 ₪)</span>
+                                            <input type="number" class="form-control qty-input drink-item"
+                                                data-name="קולה זירו" data-price="13" value="0" min="0">
+                                        </div>
+                                        <div class="item-row">
+                                            <span>ספרייט (13 ₪)</span>
+                                            <input type="number" class="form-control qty-input drink-item"
+                                                data-name="ספרייט" data-price="13" value="0" min="0">
+                                        </div>
+                                        <div class="item-row">
+                                            <span>סודה (11 ₪)</span>
+                                            <input type="number" class="form-control qty-input drink-item"
+                                                data-name="סודה" data-price="11" value="0" min="0">
+                                        </div>
+                                        <div class="item-row">
+                                            <span>מים מינרלים (10 ₪)</span>
+                                            <input type="number" class="form-control qty-input drink-item"
+                                                data-name="מים מינרלים" data-price="10" value="0" min="0">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-grid gap-2 mt-5">
+                                    <button type="button" class="btn btn-warning btn-lg fw-bold shadow"
+                                        onclick="goToSummary()">
+                                        לסיכום הזמנה ותשלום <i class="fas fa-arrow-left"></i>
+                                    </button>
+                                </div>
                             </div>
 
-                            <div class="mb-4">
-                                <label for="qty" class="form-label fw-bold">כמות</label>
-                                <input type="number" class="form-control form-control-lg" name="qty" id="qty" value="1" min="1" max="50" required>
-                            </div>
+                            <div id="step-2-summary" style="display: none;" class="fade-in">
+                                <h4 class="section-title text-center">סיכום הזמנה</h4>
 
-                            <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-dark btn-lg">חישוב מחיר ושליחה</button>
+                                <div class="table-responsive mb-4">
+                                    <table class="table table-bordered table-custom">
+                                        <thead>
+                                            <tr>
+                                                <th>פריט</th>
+                                                <th>מחיר</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="summary-table-body">
+                                        </tbody>
+                                        <tfoot class="table-light fw-bold">
+                                            <tr>
+                                                <td class="text-end">דמי משלוח:</td>
+                                                <td id="delivery-cost-display">0 ₪</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-end fs-5">סה"כ לתשלום:</td>
+                                                <td class="text-warning bg-dark fs-5" id="total-price-display">0 ₪</td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+
+                                <h4 class="section-title">פרטים אישיים</h4>
+                                <div class="row mb-3">
+                                    <div class="col-md-6 mb-2">
+                                        <label class="fw-bold">שם מלא: <span class="text-danger">*</span></label>
+                                        <input type="text" name="customer_name" id="customer_name" class="form-control"
+                                            required placeholder="הכנס שם מלא">
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <label class="fw-bold">טלפון: <span class="text-danger">*</span></label>
+                                        <input type="tel" name="customer_phone" id="customer_phone" class="form-control"
+                                            required placeholder="050-1234567" pattern="[0-9]{3}-?[0-9]{7}">
+                                    </div>
+                                </div>
+
+                                <div id="address-container" class="bg-light p-3 rounded mb-4 border"
+                                    style="display: none;">
+                                    <h6 class="fw-bold"><i class="fas fa-map-marker-alt"></i> כתובת למשלוח:</h6>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2"><input type="text" name="city" class="form-control"
+                                                placeholder="עיר"></div>
+                                        <div class="col-md-6 mb-2"><input type="text" name="street" class="form-control"
+                                                placeholder="רחוב ומספר"></div>
+                                        <div class="col-md-3 mb-2"><input type="text" name="floor" class="form-control"
+                                                placeholder="קומה"></div>
+                                        <div class="col-md-3 mb-2"><input type="text" name="apt" class="form-control"
+                                                placeholder="דירה"></div>
+                                    </div>
+                                </div>
+
+                                <h4 class="section-title">אמצעי תשלום</h4>
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="payment_method" id="pay_cash"
+                                            value="cash" checked onchange="toggleCreditCard()">
+                                        <label class="form-check-label fw-bold" for="pay_cash">
+                                            <i class="fas fa-money-bill-wave"></i> מזומן לשליח / בדלפק
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="payment_method"
+                                            id="pay_credit" value="credit" onchange="toggleCreditCard()">
+                                        <label class="form-check-label fw-bold" for="pay_credit">
+                                            <i class="fas fa-credit-card"></i> אשראי
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div id="credit-card-form" class="bg-light p-3 rounded mb-4 border"
+                                    style="display: none;">
+                                    <h6 class="fw-bold mb-3">פרטי כרטיס אשראי:</h6>
+                                    <div class="mb-3">
+                                        <label>מספר כרטיס:</label>
+                                        <input type="text" name="cc_number" class="form-control"
+                                            placeholder="0000 0000 0000 0000">
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-6">
+                                            <label>תוקף:</label>
+                                            <input type="text" name="cc_expiry" class="form-control"
+                                                placeholder="MM/YY">
+                                        </div>
+                                        <div class="col-6">
+                                            <label>CVV:</label>
+                                            <input type="text" name="cc_cvv" class="form-control" placeholder="123">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label>שם בעל הכרטיס:</label>
+                                            <input type="text" name="cc_holder" class="form-control">
+                                        </div>
+                                        <div class="col-6">
+                                            <label>ת.ז. בעל הכרטיס:</label>
+                                            <input type="text" name="cc_id" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-dark btn-lg fw-bold shadow">
+                                        אשר ושלח הזמנה
+                                    </button>
+                                    <button type="button" class="btn btn-outline-secondary" onclick="backToSelection()">
+                                        חזרה לעריכה
+                                    </button>
+                                </div>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -78,6 +559,325 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.onload = function () {
+            // Initialize: Disable required fields in both hidden forms
+            const tableForm = document.getElementById('table-reservation-form');
+            const foodForm = document.getElementById('food-order-wrapper');
+            toggleRequiredFields(tableForm, false);
+            toggleRequiredFields(foodForm, false);
+
+            const customOrder = sessionStorage.getItem('customBurger');
+            if (customOrder) {
+                document.getElementById('main-selection').style.display = 'none';
+                document.getElementById('food-order-wrapper').style.display = 'block';
+                document.getElementById('step-1-selection').style.display = 'block';
+                document.getElementById('regular-menu-selection').style.display = 'none';
+                document.getElementById('custom-burger-msg').style.display = 'block';
+
+                document.getElementById('page-title').innerText = "סיום הזמנה (הרכבה עצמית)";
+                document.getElementById('order_category').value = 'food';
+                document.getElementById('custom_burger_data').value = customOrder;
+
+                // Enable required fields for food form since it's visible
+                toggleRequiredFields(foodForm, true);
+            }
+
+            // Add form submission validation
+            const mainForm = document.getElementById('mainForm');
+            mainForm.addEventListener('submit', function (e) {
+                const orderCategory = document.getElementById('order_category').value;
+
+                if (orderCategory === 'food') {
+                    const customerName = document.querySelector('input[name="customer_name"]').value.trim();
+                    const customerPhone = document.querySelector('input[name="customer_phone"]').value.trim();
+
+                    if (!customerName || !customerPhone) {
+                        e.preventDefault();
+                        alert('נא למלא את כל הפרטים האישיים: שם מלא וטלפון');
+                        return false;
+                    }
+
+                    // Validate delivery address if delivery is selected
+                    const isDelivery = document.getElementById('delivery').checked;
+                    if (isDelivery) {
+                        const city = document.querySelector('input[name="city"]').value.trim();
+                        const street = document.querySelector('input[name="street"]').value.trim();
+
+                        if (!city || !street) {
+                            e.preventDefault();
+                            alert('נא למלא כתובת משלוח מלאה (עיר ורחוב)');
+                            return false;
+                        }
+                    }
+                }
+
+                return true;
+            });
+        };
+
+        function removeCustomBurger() {
+            if (confirm("האם אתה בטוח שברצונך למחוק את ההמבורגר שהרכבת ולחזור לתפריט הרגיל?")) {
+                sessionStorage.removeItem('customBurger');
+                window.location.reload();
+            }
+        }
+
+        function selectMainOption(option) {
+            document.getElementById('order_category').value = option;
+            document.getElementById('main-selection').style.display = 'none';
+
+            const tableForm = document.getElementById('table-reservation-form');
+            const foodForm = document.getElementById('food-order-wrapper');
+
+            if (option === 'table') {
+                // Show table reservation, hide food order
+                tableForm.style.display = 'block';
+                foodForm.style.display = 'none';
+
+                // Enable required fields in table form, disable in food form
+                toggleRequiredFields(tableForm, true);
+                toggleRequiredFields(foodForm, false);
+            } else {
+                // Show food order, hide table reservation
+                tableForm.style.display = 'none';
+                foodForm.style.display = 'block';
+                document.getElementById('step-1-selection').style.display = 'block';
+                document.getElementById('regular-menu-selection').style.display = 'block';
+
+                // Enable required fields in food form, disable in table form
+                toggleRequiredFields(foodForm, true);
+                toggleRequiredFields(tableForm, false);
+            }
+        }
+
+        function toggleRequiredFields(container, enable) {
+            // Handle existing required fields
+            const requiredInputs = container.querySelectorAll('input[required], select[required], textarea[required]');
+            requiredInputs.forEach(input => {
+                if (enable) {
+                    input.setAttribute('required', 'required');
+                } else {
+                    input.removeAttribute('required');
+                }
+            });
+
+            // Handle fields with data-required attribute
+            const dataRequiredInputs = container.querySelectorAll('input[data-required], select[data-required], textarea[data-required]');
+            dataRequiredInputs.forEach(input => {
+                if (enable) {
+                    input.setAttribute('required', 'required');
+                } else {
+                    input.removeAttribute('required');
+                }
+            });
+        }
+
+        function toggleAddressFields() {
+            const isDelivery = document.getElementById('delivery').checked;
+            const addressContainer = document.getElementById('address-container');
+
+            if (isDelivery) {
+                addressContainer.style.display = 'block';
+            } else {
+                addressContainer.style.display = 'none';
+            }
+        }
+
+        function toggleCreditCard() {
+            const isCreditCard = document.getElementById('pay_credit').checked;
+            const creditCardForm = document.getElementById('credit-card-form');
+
+            if (isCreditCard) {
+                creditCardForm.style.display = 'block';
+            } else {
+                creditCardForm.style.display = 'none';
+            }
+        }
+
+        function backToSelection() {
+            document.getElementById('step-2-summary').style.display = 'none';
+            document.getElementById('step-1-selection').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function goToSummary() {
+            let tableHTML = '';
+            let total = 0;
+            let itemCount = 0;
+
+            let orderItemsForServer = [];
+
+            const isDelivery = document.getElementById('delivery').checked;
+            const customDataJSON = sessionStorage.getItem('customBurger');
+
+            if (customDataJSON) {
+                try {
+                    const customData = JSON.parse(customDataJSON);
+                    tableHTML += `<tr class="table-active"><td colspan="2"><strong>⭐ ${customData.name}</strong></td></tr>`;
+
+                    if (customData.breakdown) {
+                        customData.breakdown.forEach(item => {
+                            let priceDisplay = item.price > 0 ? `${item.price} ₪` : 'כלול';
+                            tableHTML += `<tr><td style="padding-right: 30px;">- ${item.name}</td><td>${priceDisplay}</td></tr>`;
+                        });
+                    }
+                    total += customData.totalPrice;
+                    itemCount++;
+
+                    orderItemsForServer.push({
+                        type: 'custom_burger',
+                        name: customData.name,
+                        price: customData.totalPrice,
+                        qty: 1,
+                        details: customData
+                    });
+                } catch (e) {
+                    console.error('Error parsing custom burger data:', e);
+                    alert('שגיאה בטעינת נתוני המבורגר מותאם אישית. אנא נסה שנית.');
+                    sessionStorage.removeItem('customBurger');
+                }
+
+            } else {
+                const burgerSelect = document.getElementById('burger_select');
+                const burgerQty = parseInt(document.getElementById('burger_qty').value) || 0;
+                const burgerPrice = parseInt(burgerSelect.options[burgerSelect.selectedIndex].getAttribute('data-price')) || 0;
+
+                if (burgerPrice > 0 && burgerQty > 0) {
+                    const burgerName = burgerSelect.options[burgerSelect.selectedIndex].text;
+                    const sum = burgerPrice * burgerQty;
+                    total += sum;
+                    itemCount += burgerQty;
+
+                    const doneness = document.getElementById('std_doneness').value;
+                    const bun = document.getElementById('std_bun').value;
+                    const notes = document.getElementById('std_notes').value;
+
+                    let selectedSauces = [];
+                    document.querySelectorAll('.sauce-check:checked').forEach(cb => {
+                        selectedSauces.push(cb.value);
+                    });
+                    const saucesStr = selectedSauces.length > 0 ? `<br><small>רטבים: ${selectedSauces.join(', ')}</small>` : '';
+
+                    tableHTML += `
+                        <tr>
+                            <td>
+                                <strong>${escapeHtml(burgerName)}</strong> (x${burgerQty})<br>
+                                <small class="text-muted">עשייה: ${escapeHtml(doneness)}, לחמניה: ${escapeHtml(bun)}</small>
+                                ${saucesStr}
+                                ${notes ? `<br><small class="text-danger">הערות: ${escapeHtml(notes)}</small>` : ''}
+                            </td>
+                            <td>${sum} ₪</td>
+                        </tr>
+                    `;
+
+                    // הוספה לרשימת השרת
+                    orderItemsForServer.push({
+                        type: 'burger',
+                        name: burgerName,
+                        price: burgerPrice,
+                        qty: burgerQty,
+                        doneness: doneness,
+                        bun: bun,
+                        sauces: selectedSauces,
+                        notes: notes
+                    });
+                }
+            }
+
+            document.querySelectorAll('.side-item').forEach(input => {
+                const qty = parseInt(input.value) || 0;
+                if (qty > 0) {
+                    const price = parseInt(input.getAttribute('data-price')) || 0;
+                    const name = input.getAttribute('data-name');
+                    const itemTotal = price * qty;
+                    total += itemTotal;
+                    itemCount += qty;
+                    tableHTML += `<tr><td>${escapeHtml(name)} (x${qty})</td><td>${itemTotal} ₪</td></tr>`;
+
+                    orderItemsForServer.push({
+                        type: 'side',
+                        name: name,
+                        price: price,
+                        qty: qty
+                    });
+                }
+            });
+
+            document.querySelectorAll('.drink-item').forEach(input => {
+                const qty = parseInt(input.value) || 0;
+                if (qty > 0) {
+                    const price = parseInt(input.getAttribute('data-price')) || 0;
+                    const name = input.getAttribute('data-name');
+                    const itemTotal = price * qty;
+                    total += itemTotal;
+                    itemCount += qty;
+                    tableHTML += `<tr><td>${escapeHtml(name)} (x${qty})</td><td>${itemTotal} ₪</td></tr>`;
+
+                    // הוספה לרשימת השרת
+                    orderItemsForServer.push({
+                        type: 'drink',
+                        name: name,
+                        price: price,
+                        qty: qty
+                    });
+                }
+            });
+
+            if (itemCount === 0) {
+                alert('אנא בחרו לפחות פריט אחד להזמנה');
+                return;
+            }
+
+            document.getElementById('full_order_details').value = JSON.stringify(orderItemsForServer);
+
+
+            let deliveryCost = 0;
+            const addressContainer = document.getElementById('address-container');
+            const nameInput = document.querySelector('input[name="customer_name"]');
+            const phoneInput = document.querySelector('input[name="customer_phone"]');
+
+            nameInput.required = true;
+            phoneInput.required = true;
+
+            if (isDelivery) {
+                deliveryCost = 15;
+                total += deliveryCost;
+                addressContainer.style.display = 'block';
+
+                document.querySelector('input[name="city"]').required = true;
+                document.querySelector('input[name="street"]').required = true;
+
+                document.querySelector('input[name="floor"]').required = false;
+                document.querySelector('input[name="apt"]').required = false;
+            } else {
+                deliveryCost = 0;
+                addressContainer.style.display = 'none';
+
+                addressContainer.querySelectorAll('input').forEach(input => {
+                    input.required = false;
+                });
+            }
+
+            if (tableHTML === '') {
+                tableHTML = '<tr><td colspan="2" class="text-center text-danger">לא נבחרו פריטים</td></tr>';
+            }
+
+            document.getElementById('summary-table-body').innerHTML = tableHTML;
+            document.getElementById('delivery-cost-display').innerText = deliveryCost + ' ₪';
+            document.getElementById('total-price-display').innerText = total + ' ₪';
+
+            document.getElementById('step-1-selection').style.display = 'none';
+            document.getElementById('step-2-summary').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+    </script>
 </body>
+
 </html>

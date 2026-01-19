@@ -4,45 +4,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TastyBites - המבורגר פרימיום</title>
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
-        /* Hero Section styling with background image */
+
         .hero-section {
-            /* Using an external image URL for immediate display */
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
-            height: 100vh; /* Full viewport height */
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             text-align: center;
         }
-        
-        /* Logo styling */
+
         .navbar-brand img {
             height: 35px;
-            margin-left: 10px; /* Changed from margin-right to margin-left for RTL */
+            margin-left: 10px;
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 1rem;
+            margin-left: 8px;
+            margin-right: 8px;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        .navbar-nav .nav-link.active {
+            font-weight: 500 !important;
+            color: #ffc107 !important;
         }
 
         .feature-icon {
             font-size: 3rem;
-            color: #ffc107; /* Bootstrap warning color */
+            color: #ffc107;
             margin-bottom: 1rem;
         }
-        
+
         .footer {
             background-color: #212529;
             color: white;
             padding: 40px 0;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-section h1 {
+                font-size: 1.8rem !important;
+            }
+
+            .hero-section p.lead {
+                font-size: 1rem !important;
+            }
+
+            .navbar-nav .nav-link {
+                font-size: 0.9rem;
+                padding: 0.5rem;
+                text-align: center;
+            }
+
+            .feature-icon {
+                font-size: 2rem;
+            }
+
+            .btn-lg {
+                font-size: 1rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        @media (min-width: 577px) and (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem !important;
+            }
+
+            .navbar-nav .nav-link {
+                font-size: 0.95rem;
+            }
+
+            .container {
+                max-width: 95%;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-section {
+                height: 80vh;
+            }
+
+            .container {
+                max-width: 90%;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1320px;
+            }
         }
     </style>
 </head>
@@ -50,36 +130,56 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="TastyBites Logo">
+            <a class="navbar-brand" href="/index.html">
+                <img src="/assets/logo.png" alt="TastyBites Logo">
                 TastyBites
             </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">בית</a></li>
-                    <li class="nav-item"><a class="nav-link" href="menu.html">תפריט</a></li>
-                    <li class="nav-item"><a class="nav-link" href="gallery.html">גלריה</a></li>
-                    <li class="nav-item"><a class="nav-link" href="order.html">הזמן עכשיו</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">צור קשר</a></li>
-                    <li class="nav-item"><a class="nav-link text-warning fw-bold" href="team.html">הצוות שלנו</a></li>
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link active" href="/index.html">בית</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about.html">על המסעדה</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gallery.html">גלריה</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/menu.html">תפריט</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/burger_calculator.html">הרכבה עצמית</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/calorie_calculator.html">מחשבון קלוריות</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/order.html">הזמן עכשיו</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/customer_reviews.php">ביקורות לקוחות</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact.html">צור קשר</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/team.html">הצוות שלנו</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <header class="hero-section">
-        <div class="container">
+        <div class="container fade-in-up">
             <h1 class="display-1 fw-bold">ברוכים הבאים ל-TastyBites</h1>
             <p class="lead fs-3 mb-4">ההמבורגרים הכי טובים בעיר, במשלוח ישיר עד הדלת.</p>
-            <a href="order.html" class="btn btn-warning btn-lg px-5">התחל הזמנה</a>
+            <a href="/order.html" class="btn btn-warning btn-lg px-5">התחל הזמנה</a>
         </div>
     </header>
 
+    <section class="py-5 bg-light">
+        <div class="container text-center fade-in-up">
+            <h2 class="mb-4">צפו בפרסומת שלנו</h2>
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <video autoplay loop muted playsinline style="width: 100%; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                        <source src="/assets/commercial.mp4" type="video/mp4">
+                        הדפדפן שלך לא תומך בניגון וידאו.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="py-5">
-        <div class="container text-center">
+        <div class="container text-center fade-in-up">
             <div class="row mb-5">
                 <div class="col-lg-8 mx-auto">
                     <h2>איכות שאפשר לטעום</h2>
@@ -106,20 +206,6 @@
         </div>
     </section>
 
-    <section class="py-5 bg-light">
-        <div class="container text-center">
-            <h2 class="mb-4">צפו בפרסומת שלנו</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <video autoplay loop muted playsinline style="width: 100%; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
-                        <source src="commercial.mp4" type="video/mp4">
-                        הדפדפן שלך לא תומך בניגון וידאו.
-                    </video>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <footer class="footer text-center">
         <div class="container">
             <div class="row justify-content-center mb-3">
@@ -133,12 +219,33 @@
                 </div>
             </div>
             <hr class="bg-secondary">
+            <div class="mb-3">
+                <h6 class="text-white-50">קישורים שימושיים</h6>
+                <p class="small mb-1">
+                    <a href="https://www.health.gov.il/subjects/foodandhygiene/" target="_blank" class="text-white-50 me-3" style="text-decoration: none;">משרד הבריאות - בטיחות מזון</a>
+                    <a href="https://www.10bis.co.il/" target="_blank" class="text-white-50 me-3" style="text-decoration: none;">10Bis משלוחים</a>
+                    <a href="https://www.rest.co.il/" target="_blank" class="text-white-50" style="text-decoration: none;">REST - איגוד המסעדנים</a>
+                </p>
+            </div>
             <p class="mb-0">&copy; 2025 TastyBites. כל הזכויות שמורות.</p>
             <p class="small text-white-50">
                 <a href="#" class="text-white-50" style="text-decoration: none;">הורד הצעת פרויקט (PDF)</a>
             </p>
         </div>
     </footer>
+
+    <script>
+        const burgerFacts = [
+            "הידעת? ההמבורגרים שלנו עשויים מ-100% בשר טרי טחון במקום.",
+            "טיפ: נסו את רוטב הבית הסודי שלנו עם צ'יפס בטטה.",
+            "חדש: משלוחים חינם בהזמנה מעל 150 ש\"ח!"
+        ];
+
+        console.log("--- עובדות טעימות מ-TastyBites ---");
+        for (let i = 0; i < burgerFacts.length; i++) {
+            console.log("עובדה מס' " + (i + 1) + ": " + burgerFacts[i]);
+        }
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

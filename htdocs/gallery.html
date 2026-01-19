@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>גלריה - TastyBites</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            padding-top: 80px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('/assets/Background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .navbar-brand img {
+            height: 35px;
+            margin-left: 10px;
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 1rem;
+            margin-left: 8px;
+            margin-right: 8px;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        .navbar-nav .nav-link.active {
+            font-weight: 500 !important;
+            color: #ffc107 !important;
+        }
+
+        .footer {
+            background-color: rgba(33, 37, 41, 0.9);
+            color: white;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+
+        .page-title {
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            margin-bottom: 20px;
+        }
+
+        .page-subtitle {
+            color: #ffc107;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            margin-bottom: 40px;
+            font-size: 1.2rem;
+        }
+
+        .carousel-item img {
+            height: 550px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .carousel {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .carousel-item img {
+                height: 300px;
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/index.html">
+                <img src="/assets/logo.png" alt="TastyBites Logo">
+                TastyBites
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="/index.html">בית</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about.html">על המסעדה</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/gallery.html">גלריה</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/menu.html">תפריט</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/burger_calculator.html">הרכבה עצמית</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/calorie_calculator.html">מחשבון קלוריות</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/order.html">הזמן עכשיו</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/customer_reviews.php">ביקורות לקוחות</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact.html">צור קשר</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/team.html">הצוות שלנו</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container text-center mt-4">
+        <div class="fade-in-up">
+            <h1 class="page-title fw-bold">הגלריה שלנו</h1>
+            <p class="page-subtitle"></p>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+
+                    <div id="restaurantCarousel" class="carousel slide" data-bs-ride="carousel">
+
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#restaurantCarousel" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#restaurantCarousel" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#restaurantCarousel" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#restaurantCarousel" data-bs-slide-to="3"
+                                aria-label="Slide 4"></button>
+                        </div>
+
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="/assets/gallery4.jpg" class="d-block w-100" alt="תמונה 1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="/assets/gallery2.jpg" class="d-block w-100" alt="תמונה 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="/assets/gallery3.jpg" class="d-block w-100" alt="תמונה 3">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="/assets/gallery1.jpg" class="d-block w-100" alt="תמונה 4">
+                            </div>
+                        </div>
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#restaurantCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">הקודם</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#restaurantCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">הבא</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer text-center">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 TastyBites. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        console.log("גלריית TastyBites נטענה!");
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            console.log("הגלריה מכילה " + carouselItems.length + " תמונות");
+
+            const imageDescriptions = [
+                "המבורגר קלאסי עם ציפס",
+                "המבורגר גורמה מיוחד",
+                "מבחר המבורגרים על הגריל",
+                "ארוחה משפחתית מושלמת"
+            ];
+
+            console.log("--- תיאורי התמונות ---");
+            for (let i = 0; i < imageDescriptions.length; i++) {
+                console.log("תמונה " + (i + 1) + ": " + imageDescriptions[i]);
+            }
+
+            const carousel = document.getElementById('galleryCarousel');
+            if (carousel) {
+                carousel.addEventListener('slid.bs.carousel', function (e) {
+                    console.log("עבר לתמונה מספר: " + (e.to + 1));
+                });
+            }
+
+            const indicators = document.querySelectorAll('.carousel-indicators button');
+            let clickCount = 0;
+
+            indicators.forEach(function (indicator, index) {
+                indicator.addEventListener('click', function () {
+                    clickCount++;
+                    console.log("לחיצה על אינדיקטור " + (index + 1) + " (סה\"כ לחיצות: " + clickCount + ")");
+                });
+            });
+
+            const galleryTitle = "גלריה של TastyBites";
+            const upperTitle = galleryTitle.toUpperCase();
+            console.log("כותרת בגדול: " + upperTitle);
+        });
+    </script>
+</body>
+
+</html>

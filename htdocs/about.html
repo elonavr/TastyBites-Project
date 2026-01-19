@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>על המסעדה - TastyBites</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            padding-top: 80px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('/assets/Background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .navbar-brand img {
+            height: 35px;
+            margin-left: 10px;
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 1rem;
+            margin-left: 8px;
+            margin-right: 8px;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        .navbar-nav .nav-link.active {
+            font-weight: 500 !important;
+            color: #ffc107 !important;
+        }
+
+        .footer {
+            background-color: rgba(33, 37, 41, 0.9);
+            color: white;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+
+        .story-container {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            margin-top: 20px;
+        }
+
+        .story-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 193, 7, 0.3);
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .story-container {
+                padding: 10px;
+                border-radius: 10px;
+            }
+
+            .navbar-nav .nav-link {
+                font-size: 0.9rem;
+                padding: 0.5rem;
+            }
+
+            .story-container ol {
+                font-size: 1rem !important;
+                line-height: 1.5 !important;
+            }
+
+            .btn-lg {
+                font-size: 1rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        @media (min-width: 577px) and (max-width: 768px) {
+            .story-container {
+                padding: 15px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/index.html">
+                <img src="/assets/logo.png" alt="TastyBites Logo">
+                TastyBites
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="/index.html">בית</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/about.html">על המסעדה</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gallery.html">גלריה</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/menu.html">תפריט</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/burger_calculator.html">הרכבה עצמית</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/calorie_calculator.html">מחשבון קלוריות</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/order.html">הזמן עכשיו</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/customer_reviews.php">ביקורות לקוחות</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact.html">צור קשר</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/team.html">הצוות שלנו</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+
+                <div class="story-container fade-in-up">
+                    <img src="/assets/About.png" alt="הסיפור שלנו" class="story-image">
+                </div>
+
+                <div class="story-container fade-in-up mt-4">
+                    <h3 class="text-warning text-center mb-4">הערכים שלנו</h3>
+                    <ol class="text-white fs-5" style="line-height: 2;">
+                        <li><strong>איכות ראשונה:</strong> בשר טרי מדי יום, ללא תוספים מלאכותיים</li>
+                        <li><strong>שירות מהיר:</strong> משלוח תוך 30 דקות או שהמנה חינם</li>
+                        <li><strong>מרכיבים טריים:</strong> ירקות מקומיים ומקור מהימן</li>
+                        <li><strong>מחויבות לסביבה:</strong> אריזות מתכלות וידידותיות לסביבה</li>
+                        <li><strong>שביעות רצון מלאה:</strong> החזר כספי מלא אם לא מרוצים</li>
+                    </ol>
+                </div>
+
+                <div class="text-center mt-4 fade-in-up">
+                    <a href="/menu.html" class="btn btn-warning btn-lg fw-bold shadow">
+                        השתכנעתם? בואו לראות את התפריט
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer text-center">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 TastyBites. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        console.log("דף 'אודות' נטען בהצלחה!");
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const valuesList = document.querySelectorAll('.story-container ol li');
+            console.log("המסעדה שלנו מציגה " + valuesList.length + " ערכים מרכזיים");
+
+            const milestones = [
+                "2015 - פתיחת הסניף הראשון",
+                "2018 - 10,000 לקוחות מרוצים",
+                "2020 - פיתוח מערכת ההזמנות המקוונת",
+                "2025 - המבורגרים מספר 1 בישראל"
+            ];
+
+            console.log("--- אבני דרך של TastyBites ---");
+            for (let i = 0; i < milestones.length; i++) {
+                console.log(milestones[i]);
+            }
+
+            const storyImage = document.querySelector('.story-image');
+            if (storyImage) {
+                storyImage.addEventListener('click', function () {
+                    alert("תודה שאתם קוראים את הסיפור שלנו! 🍔");
+                });
+            }
+
+            valuesList.forEach(function (item) {
+                item.addEventListener('mouseenter', function () {
+                    this.style.color = '#ffc107';
+                    this.style.transition = 'color 0.3s ease';
+                });
+
+                item.addEventListener('mouseleave', function () {
+                    this.style.color = 'white';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

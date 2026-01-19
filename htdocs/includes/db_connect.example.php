@@ -3,7 +3,7 @@
 
 $servername = "sql207.byetcluster.com"; 
 $username = "YOUR_USERNAME_HERE"; 
-$password = "YOUR_PASSWORD_HERE"; // לעולם אל תעלה סיסמה אמיתית לכאן
+$password = "YOUR_PASSWORD_HERE"; 
 $dbname = "YOUR_DATABASE_NAME_HERE"; 
 
 $conn = new mysqli($servername, $username, $password, $dbname);

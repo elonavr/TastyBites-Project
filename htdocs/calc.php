@@ -17,7 +17,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="TastyBites Logo">
+                <img src="/assets/logo.png" alt="TastyBites Logo">
                 TastyBites
             </a>
         </div>

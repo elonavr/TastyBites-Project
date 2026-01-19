@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הרכבה עצמית - TastyBites</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            padding-top: 80px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('/assets/Background.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .navbar-brand img {
+            height: 35px;
+            margin-left: 10px;
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 1rem;
+            margin-left: 8px;
+            margin-right: 8px;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        .navbar-nav .nav-link.active {
+            font-weight: 500 !important;
+            color: #ffc107 !important;
+        }
+
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .category-title {
+            color: #212529;
+            border-bottom: 3px solid #ffc107;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            font-weight: 800;
+            margin-top: 20px;
+        }
+
+        .form-check-input:checked {
+            background-color: #ffc107;
+            border-color: #ffc107;
+        }
+
+        .footer {
+            background-color: rgba(33, 37, 41, 0.9);
+            color: white;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .burger-builder-card {
+                padding: 1rem;
+                border-radius: 10px;
+            }
+
+            .navbar-nav .nav-link {
+                font-size: 0.9rem;
+                padding: 0.5rem;
+            }
+
+            .category-title {
+                font-size: 1.1rem;
+            }
+
+            .btn-lg {
+                font-size: 1rem;
+                padding: 0.5rem 1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (min-width: 577px) and (max-width: 768px) {
+            .col-lg-8 {
+                max-width: 95%;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/index.html">
+                <img src="/assets/logo.png" alt="TastyBites Logo" height="35">
+                TastyBites
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span
+                    class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="/index.html">בית</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about.html">על המסעדה</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gallery.html">גלריה</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/menu.html">תפריט</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/burger_calculator.html">הרכבה
+                            עצמית</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/calorie_calculator.html">מחשבון קלוריות</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/order.html">הזמן עכשיו</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/customer_reviews.php">ביקורות לקוחות</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact.html">צור קשר</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/team.html">הצוות שלנו</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card glass-card p-4 fade-in-up">
+
+                    <div class="text-center mb-4">
+                        <h1 class="fw-bold display-5">המבורגר בהרכבה עצמית</h1>
+                        <p class="lead">בנו את המבורגר החלומות שלכם וקבלו הצעת מחיר</p>
+                    </div>
+
+                    <form id="customBurgerForm">
+
+                        <h4 class="category-title"><i class="fas fa-layer-group"></i> הבסיס</h4>
+                        <div class="row mb-4">
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">גודל הקציצה:</label>
+                                <select class="form-select" id="patty_size">
+                                    <option value="single" data-price="58">220 גרם (58 ₪)</option>
+                                    <option value="double" data-price="76">440 גרם (+18 ₪)</option>
+                                    <option value="triple" data-price="90">660 גרם (+32 ₪)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">מידת עשייה:</label>
+                                <select class="form-select" id="doneness">
+                                    <option value="Medium">Medium (מומלץ)</option>
+                                    <option value="Medium-Well">Medium-Well</option>
+                                    <option value="Well-Done">Well-Done</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">לחמניה:</label>
+                                <select class="form-select" id="bun_type">
+                                    <option value="brioche">בריוש קלאסית</option>
+                                    <option value="whole">חיטה מלאה</option>
+                                    <option value="gluten_free">ללא גלוטן (+4 ₪)</option>
+                                    <option value="naked">ללא לחמניה (על חסה)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <h4 class="category-title"><i class="fas fa-leaf"></i> ירקות (ללא תוספת תשלום)</h4>
+                        <div class="row mb-4">
+                            <div class="col-6 col-md-3">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="חסה אייסברג" checked><label class="form-check-label">חסה אייסברג</label>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="עגבניה" checked><label class="form-check-label">עגבניה</label></div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="בצל סגול" checked><label class="form-check-label">בצל סגול</label></div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="חמוצים" checked><label class="form-check-label">חמוצים</label></div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="חריף טרי"><label class="form-check-label">חריף טרי</label></div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="קולסלאו"><label class="form-check-label">קולסלאו</label></div>
+                            </div>
+                        </div>
+
+                        <h4 class="category-title"><i class="fas fa-bacon"></i> המושחתים (6 ₪ ליח')</h4>
+                        <div class="row mb-4">
+                            <div class="col-6 col-md-4">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="בצל קריספי" data-price="6"><label class="form-check-label">בצל
+                                        קריספי</label></div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="ריבת בצל" data-price="6"><label class="form-check-label">ריבת בצל</label>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="פטריות פורטבלו" data-price="6"><label class="form-check-label">פטריות
+                                        פורטבלו</label></div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="חלפיניו כבוש" data-price="6"><label class="form-check-label">חלפיניו
+                                        כבוש</label></div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="פלפלים קלויים" data-price="6"><label class="form-check-label">פלפלים
+                                        קלויים</label></div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="חציל בטחינה" data-price="6"><label class="form-check-label">חציל
+                                        בטחינה</label></div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="קונפי שום" data-price="6"><label class="form-check-label">קונפי
+                                        שום</label></div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="ביצת עין הפוכה" data-price="6"><label class="form-check-label">ביצת עין
+                                        הפוכה</label></div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="טבעות בצל בפנים" data-price="6"><label class="form-check-label">טבעות בצל
+                                        (בפנים)</label></div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="אננס בצ'ילי" data-price="6"><label class="form-check-label">אננס
+                                        בצ'ילי</label></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="category-title"><i class="fas fa-cheese"></i> גבינות (8-10 ₪)</h4>
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="צ'דר כתומה" data-price="8"><label class="form-check-label">צ'דר כתומה (8
+                                        ₪)</label></div>
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="אמנטל" data-price="8"><label class="form-check-label">אמנטל (8 ₪)</label>
+                                </div>
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="גבינה כחולה" data-price="8"><label class="form-check-label">גבינה כחולה
+                                        (8 ₪)</label></div>
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="חלומי צרובה" data-price="10"><label class="form-check-label">חלומי צרובה
+                                        (10 ₪)</label></div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h4 class="category-title"><i class="fas fa-drumstick-bite"></i> תוספות בשר</h4>
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="רצועות אסאדו" data-price="12"><label class="form-check-label">רצועות
+                                        אסאדו (12 ₪)</label></div>
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="בייקון טלה" data-price="12"><label class="form-check-label">בייקון טלה
+                                        (12 ₪)</label></div>
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="צ'וריסו" data-price="12"><label class="form-check-label">צ'וריסו (12
+                                        ₪)</label></div>
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="כבד אווז" data-price="25"><label class="form-check-label">כבד אווז (25
+                                        ₪)</label></div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <h4 class="category-title"><i class="fas fa-spray-can"></i> רטבים (3 ₪ החל מהשלישי)</h4>
+                        <p class="text-muted small">* קטשופ ומיונז מגיעים בצד תמיד. רטבים ראשונים חינם.</p>
+                        <div class="row mb-4">
+                            <div class="col-6 col-md-3">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="איולי כמהין"><label class="form-check-label">איולי כמהין</label></div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="איולי צ'יפוטלה"><label class="form-check-label">איולי צ'יפוטלה</label>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="ברביקיו דבש"><label class="form-check-label">ברביקיו דבש</label></div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="חרדל דיז'ון"><label class="form-check-label">חרדל דיז'ון</label></div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="צ'ימיצ'ורי"><label class="form-check-label">צ'ימיצ'ורי</label></div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="סריראצ'ה"><label class="form-check-label">סריראצ'ה (חריף)</label></div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="חמאת בוטנים"><label class="form-check-label">חמאת בוטנים</label></div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="form-check"><input class="form-check-input topping-check" type="checkbox"
+                                        value="ריבת יער"><label class="form-check-label">ריבת יער</label></div>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2 mt-5">
+                            <button type="button" onclick="transferToCheckout()"
+                                class="btn btn-warning btn-lg shadow fw-bold">
+                                <i class="fas fa-arrow-left"></i> סיימתי, עבור להזמנה
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer text-center">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 TastyBites. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+
+    <script>
+        function transferToCheckout() {
+            let breakdown = [];
+            let total = 0;
+
+            const sizeSelect = document.getElementById('patty_size');
+            const sizeText = sizeSelect.options[sizeSelect.selectedIndex].text;
+            let basePrice = parseInt(sizeSelect.options[sizeSelect.selectedIndex].getAttribute('data-price'));
+
+            breakdown.push({ name: `קציצה (${sizeText})`, price: basePrice });
+            total += basePrice;
+
+            const doneness = document.getElementById('doneness').value;
+            const bun = document.getElementById('bun_type').value;
+
+            breakdown.push({ name: `מידת עשייה: ${doneness}`, price: 0 });
+            breakdown.push({ name: `לחמניה: ${bun}`, price: 0 });
+
+            const allChecked = document.querySelectorAll('.topping-check:checked');
+
+            allChecked.forEach(checkbox => {
+                let itemPrice = 0;
+                if (checkbox.getAttribute('data-price')) {
+                    itemPrice = parseInt(checkbox.getAttribute('data-price'));
+                }
+
+                breakdown.push({ name: checkbox.value, price: itemPrice });
+                total += itemPrice;
+            });
+
+            const customOrder = {
+                type: 'custom',
+                name: "המבורגר בהרכבה אישית",
+                breakdown: breakdown,
+                totalPrice: total
+            };
+
+            sessionStorage.setItem('customBurger', JSON.stringify(customOrder));
+            window.location.href = 'order.html';
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

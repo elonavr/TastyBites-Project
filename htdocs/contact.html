@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>צור קשר - TastyBites</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            padding-top: 80px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('/assets/Background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .navbar-brand img { height: 35px; margin-left: 10px; }
+
+        .navbar-nav .nav-link {
+            font-size: 1rem;
+            margin-left: 8px;
+            margin-right: 8px;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        .navbar-nav .nav-link.active {
+            font-weight: 500 !important;
+            color: #ffc107 !important;
+        }
+
+        .footer {
+            background-color: rgba(33, 37, 41, 0.9);
+            color: white;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+
+        .form-card {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(5px);
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .card-header {
+            background-color: transparent !important;
+            border-bottom: 2px solid #ffc107;
+            padding-bottom: 0;
+            color: #000;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .form-card {
+                border-radius: 10px;
+                margin: 1rem;
+            }
+            .navbar-nav .nav-link {
+                font-size: 0.9rem;
+                padding: 0.5rem;
+            }
+            .card-body {
+                padding: 1.5rem !important;
+            }
+        }
+
+        @media (min-width: 577px) and (max-width: 768px) {
+            .col-md-8 {
+                max-width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/index.html">
+                <img src="/assets/logo.png" alt="TastyBites Logo">
+                TastyBites
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="/index.html">בית</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about.html">על המסעדה</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gallery.html">גלריה</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/menu.html">תפריט</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/burger_calculator.html">הרכבה עצמית</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/calorie_calculator.html">מחשבון קלוריות</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/order.html">הזמן עכשיו</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/customer_reviews.php">ביקורות לקוחות</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/contact.html">צור קשר</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/team.html">הצוות שלנו</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-5">
+                <div class="card form-card mt-5 fade-in-up">
+
+                    <div class="card-header text-center p-4">
+                        <h2 class="fw-bold mb-0">צור קשר</h2>
+                        <p class="mb-0 text-muted">יש לך שאלה? אנחנו כאן לעזור!</p>
+                    </div>
+
+                    <div class="card-body p-4">
+
+                        <form action="/backend/contact_process.php" method="POST" id="contactForm">
+
+                            <div class="mb-3">
+                                <label for="fullName" class="form-label fw-bold">שם מלא:</label>
+                                <input type="text" class="form-control" id="fullName" name="fullName" placeholder="הכנס את שמך המלא" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label fw-bold">דואר אלקטרוני:</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="phone" class="form-label fw-bold">טלפון:</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="050-1234567" pattern="[0-9]{3}-[0-9]{7}">
+                                <small class="text-muted">פורמט: 050-1234567</small>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="topic" class="form-label fw-bold">נושא הפנייה:</label>
+                                <select class="form-select" id="topic" name="topic" required>
+                                    <option value="" disabled selected>בחר נושא...</option>
+                                    <option value="Support">תמיכה טכנית</option>
+                                    <option value="Sales">מכירות / הזמנות</option>
+                                    <option value="Other">אחר</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">דרך יצירת קשר מועדפת:</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="contactMethod" id="methodEmail" value="email" checked>
+                                    <label class="form-check-label" for="methodEmail">אימייל</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="contactMethod" id="methodPhone" value="phone">
+                                    <label class="form-check-label" for="methodPhone">טלפון</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="contactMethod" id="methodSMS" value="sms">
+                                    <label class="form-check-label" for="methodSMS">SMS</label>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">נושאים שמעניינים אותך:</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="interests[]" value="menu" id="interestMenu">
+                                    <label class="form-check-label" for="interestMenu">תפריט חדש</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="interests[]" value="deals" id="interestDeals">
+                                    <label class="form-check-label" for="interestDeals">מבצעים והנחות</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="interests[]" value="events" id="interestEvents">
+                                    <label class="form-check-label" for="interestEvents">אירועים ומסיבות</label>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="preferredDate" class="form-label fw-bold">תאריך מועדף לתשובה:</label>
+                                <input type="date" class="form-control" id="preferredDate" name="preferredDate">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="satisfaction" class="form-label fw-bold">דרג את שביעות הרצון שלך מהאתר (1-10):</label>
+                                <input type="range" class="form-range" id="satisfaction" name="satisfaction" min="1" max="10" value="5" oninput="this.nextElementSibling.value = this.value">
+                                <output class="ms-2 fw-bold">5</output>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="favoriteColor" class="form-label fw-bold">צבע המותג האהוב עליך:</label>
+                                <input type="color" class="form-control form-control-color" id="favoriteColor" name="favoriteColor" value="#ffc107">
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="message" class="form-label fw-bold">הודעה:</label>
+                                <textarea class="form-control" id="message" name="message" rows="5" placeholder="כתוב את ההודעה שלך כאן..." required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="attachment" class="form-label fw-bold">צרף קובץ (אופציונלי):</label>
+                                <input type="file" class="form-control" id="attachment" name="attachment" accept=".pdf,.jpg,.png,.doc,.docx">
+                                <small class="text-muted">פורמטים: PDF, JPG, PNG, DOC (מקס 5MB)</small>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-dark btn-lg shadow">שלח הודעה</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer text-center">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 TastyBites. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+
+    <script>
+        console.log("טופס יצירת קשר נטען!");
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            const fullNameInput = document.getElementById('fullName');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
+            const satisfactionRange = document.getElementById('satisfaction');
+
+            const validationMessages = [
+                "נא למלא את כל השדות החובה",
+                "כתובת אימייל לא תקינה",
+                "ההודעה קצרה מדי - נדרשים לפחות 10 תווים"
+            ];
+
+            console.log("--- הודעות ולידציה ---");
+            for (let i = 0; i < validationMessages.length; i++) {
+                console.log((i + 1) + ". " + validationMessages[i]);
+            }
+
+            form.addEventListener('submit', function(e) {
+                if (fullNameInput.value.trim().length < 2) {
+                    e.preventDefault();
+                    alert("שם מלא חייב להכיל לפחות 2 תווים");
+                    fullNameInput.focus();
+                    return false;
+                }
+
+                if (messageInput.value.trim().length < 10) {
+                    e.preventDefault();
+                    alert(validationMessages[2]);
+                    messageInput.focus();
+                    return false;
+                }
+
+                console.log("שולח טופס עבור: " + fullNameInput.value);
+                console.log("נושא: " + document.getElementById('topic').value);
+                console.log("דירוג שביעות רצון: " + satisfactionRange.value);
+
+                return true;
+            });
+
+            satisfactionRange.addEventListener('input', function() {
+                const value = this.value;
+                console.log("דירוג שביעות רצון השתנה ל: " + value);
+
+                if (value <= 3) {
+                    this.style.accentColor = '#dc3545';
+                } else if (value <= 7) {
+                    this.style.accentColor = '#ffc107';
+                } else {
+                    this.style.accentColor = '#28a745';
+                }
+            });
+
+            messageInput.addEventListener('input', function() {
+                const length = this.value.length;
+                const maxLength = 1000;
+                console.log("אורך הודעה: " + length + "/" + maxLength);
+            });
+
+            fullNameInput.addEventListener('blur', function() {
+                const upperName = this.value.toUpperCase();
+                console.log("שם באותיות גדולות: " + upperName);
+            });
+
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        console.log("נבחר: " + this.value);
+                        this.parentElement.style.backgroundColor = '#fff3cd';
+                    } else {
+                        this.parentElement.style.backgroundColor = 'transparent';
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
